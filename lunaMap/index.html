@@ -1,1 +1,69 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>ArcGIS Maps SDK for JavaScript Tutorials: Display a map</title>
 
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+<link rel="stylesheet" href="https://js.arcgis.com/4.25/esri/themes/light/main.css">
+    <script src="https://js.arcgis.com/4.25/"></script>
+    
+    <script>
+      require(["esri/config", "esri/Map", "esri/views/MapView", "esri/widgets/Locate", "esri/widgets/Track",  "esri/Graphic", "esri/layers/FeatureLayer"
+], function(esriConfig, Map, MapView, Locate, Track, Graphic, FeatureLayer) {
+     
+        esriConfig.apiKey = "AAPK4030c0c4334e46eeb057cc7d0491179744ySBz0zV38yBpdipJFPPy0wpV8i7XhNZQPJJRA_sZx9lNQPTS7gc3_gWfwq-85M";
+
+        const map = new Map({
+          basemap: "arcgis-navigation" // Basemap layer service
+        });  
+        
+        const view = new MapView({
+          map: map,
+          center: [-40, 28], // Longitude, latitude
+          zoom: 1, // Zoom level
+          container: "viewDiv" // Div element
+        });
+        // My map shows the 8 most romantic places in the world after some research (for Valentines Day). Hopefully you don't disagree with too many of them!
+        //Trailheads feature layer (points)
+  const valentineLayer = new FeatureLayer({
+    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Most_Romatic_Places/FeatureServer"
+  });
+        
+       map.add(valentineLayer);
+        
+         const track = new Track({
+          view: view,
+          graphic: new Graphic({
+            symbol: {
+              type: "simple-marker",
+              size: "12px",
+              color: "green",
+              outline: {
+                color: "#efefef",
+                width: "1.5px"
+              }
+            }
+          }),
+          useHeadingEnabled: false
+        });
+        view.ui.add(track, "top-left");
+      });
+    </script>
+
+
+  </head>
+  <body>
+    <div id="viewDiv"></div>
+  </body>
+</html>
