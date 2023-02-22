@@ -34,10 +34,9 @@
           zoom: 1, // Zoom level
           container: "viewDiv" // Div element
         });
-        // My map shows the 8 most romantic places in the world after some research (for Valentines Day). Hopefully you don't disagree with too many of them!
-        //Trailheads feature layer (points)
+        // The Canadian Map Layer from the ArcGIS server!
   const CanadaLayer = new FeatureLayer({
-    url: "https://utility.arcgis.com/usrsvcs/servers/697b4dc38740479d946182114d424d69/rest/services/geom99wed/AlouelleCanada/MapServer"
+    url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/CartographyCanadaAO/FeatureServer"
   });
         
        map.add(CanadaLayer);
