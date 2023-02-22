@@ -25,7 +25,7 @@
         esriConfig.apiKey = "AAPK4030c0c4334e46eeb057cc7d0491179744ySBz0zV38yBpdipJFPPy0wpV8i7XhNZQPJJRA_sZx9lNQPTS7gc3_gWfwq-85M";
 
         const map = new Map({
-          basemap: "arcgis-navigation" // Basemap layer service
+          basemap: "streets-night-vector" // Basemap layer service
         });  
         
         const view = new MapView({
@@ -36,11 +36,11 @@
         });
         // My map shows the 8 most romantic places in the world after some research (for Valentines Day). Hopefully you don't disagree with too many of them!
         //Trailheads feature layer (points)
-  const valentineLayer = new FeatureLayer({
+  const CanadaLayer = new FeatureLayer({
     url: "https://services1.arcgis.com/pMeXRvgWClLJZr3s/arcgis/rest/services/Most_Romatic_Places/FeatureServer"
   });
         
-       map.add(valentineLayer);
+       map.add(CanadaLayer);
         
          const track = new Track({
           view: view,
